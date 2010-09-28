@@ -3,6 +3,7 @@
 namespace Bundle\MarkdownBundle\Twig\Extension;
 
 use Bundle\MarkdownBundle\Helper\MarkdownHelper;
+use Bundle\MarkdownBundle\Twig\TokenParser\Markdown as MarkdownTokenParser;
 
 class MarkdownTwigExtension extends \Twig_Extension
 {
@@ -11,6 +12,13 @@ class MarkdownTwigExtension extends \Twig_Extension
     function __construct(MarkdownHelper $helper)
     {
         $this->helper = $helper;
+    }
+
+    public function getTokenParsers()
+    {
+        return array(
+            new MarkdownTokenParser(),
+        );
     }
 
     public function getFilters()
