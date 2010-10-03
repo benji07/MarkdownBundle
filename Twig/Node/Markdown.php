@@ -27,7 +27,7 @@ class Markdown extends \Twig_Node
 
         $compiler
             ->write("ob_start(array(\$context['_view']['markdown'], 'transform'));\n")
-            ->subcompile($this->body)
+            ->subcompile($this->getNode('body'))
             ->write("ob_end_flush();\n")
         ;
     }
